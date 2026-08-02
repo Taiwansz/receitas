@@ -534,7 +534,7 @@ function Manager({
       </div>
       <div className="overflow-x-auto">
         <table className="w-full min-w-[720px] text-left">
-          <thead className="bg-[#f7f9f7] text-xs text-[var(--muted)]">
+          <thead className="bg-[#fff6df] text-xs text-[var(--muted)]">
             <tr>
               {visible.map((f) => (
                 <th key={f.name} className="px-5 py-3 font-semibold">
@@ -556,7 +556,7 @@ function Manager({
               </tr>
             ) : (
               rows.map((row) => (
-                <tr key={row.id} className="hover:bg-[#fafcfa]">
+                <tr key={row.id} className="hover:bg-[#fffaf0]">
                   {visible.map((f) => (
                     <td key={f.name} className="px-5 py-3 text-sm">
                       {display(row[f.name], f, options[f.name])}
@@ -778,7 +778,7 @@ function TeamPage({ workspace }: { workspace: Workspace }) {
         </p>
       </div>
       <table className="w-full min-w-[600px] text-left">
-        <thead className="bg-[#f7f9f7] text-xs text-[var(--muted)]">
+        <thead className="bg-[#fff6df] text-xs text-[var(--muted)]">
           <tr>
             <th className="px-5 py-3">Usuário</th>
             <th>Status</th>

@@ -96,7 +96,7 @@ export function IngredientsPage({ workspace }: { workspace: Workspace }) {
       </header>
       <div className="overflow-x-auto">
         <table className="w-full min-w-[820px] text-left">
-          <thead className="bg-[#f7f9f7] text-xs text-[var(--muted)]">
+          <thead className="bg-[#fff6df] text-xs text-[var(--muted)]">
             <tr>
               <th className="px-5 py-3">Ingrediente</th>
               <th>Unidade</th>
@@ -112,7 +112,7 @@ export function IngredientsPage({ workspace }: { workspace: Workspace }) {
               const low =
                 Number(row.current_stock) <= Number(row.minimum_stock);
               return (
-                <tr key={row.id} className="hover:bg-[#fafcfa]">
+                <tr key={row.id} className="hover:bg-[#fffaf0]">
                   <td className="px-5 py-3">
                     <div className="font-semibold text-sm">{row.name}</div>
                     <div className="text-xs text-[var(--muted)]">

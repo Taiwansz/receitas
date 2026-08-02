@@ -527,7 +527,7 @@ function DataTable({
   return (
     <section className="panel overflow-x-auto">
       <table className="w-full min-w-[700px] text-left">
-        <thead className="bg-[#f7f9f7] text-xs text-[var(--muted)]">
+        <thead className="bg-[#fff6df] text-xs text-[var(--muted)]">
           <tr>
             {heads.map((h, i) => (
               <th key={h} className={i === 0 ? "px-5 py-3" : "py-3"}>

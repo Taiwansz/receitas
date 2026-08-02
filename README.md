@@ -1,6 +1,6 @@
-# Custiva
+# Custiva - Gestão André da Empada
 
-Plataforma web multiempresa para custos de ingredientes, fichas técnicas, compras, estoque, produção, precificação por canal e relatórios de rentabilidade para negócios de alimentação.
+Plataforma da André da Empada para custos de ingredientes, fichas técnicas, compras, estoque, produção, precificação por canal e relatórios de rentabilidade.
 
 Aplicação publicada: https://custiva.vercel.app
 

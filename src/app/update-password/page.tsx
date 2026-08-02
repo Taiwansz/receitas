@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { BrandLockup } from "@/components/brand-lockup";
 import { createClient } from "@/lib/supabase/client";
 
 export default function UpdatePasswordPage() {
@@ -25,12 +26,12 @@ export default function UpdatePasswordPage() {
     setSaving(false);
   }
   return (
-    <main className="min-h-[100dvh] grid place-items-center p-5 bg-[#e8efe9]">
-      <section className="panel w-full max-w-md p-7">
-        <div className="text-xl font-extrabold tracking-[-.04em] text-[var(--accent)]">
-          custiva
-        </div>
-        <h1 className="mt-8 text-2xl font-bold">Defina uma nova senha</h1>
+    <main className="brand-panel relative min-h-[100dvh] grid place-items-center overflow-hidden p-5">
+      <section className="panel relative z-[1] w-full max-w-md p-7 md:p-9">
+        <BrandLockup compact />
+        <h1 className="brand-display mt-8 text-3xl font-extrabold text-[#6d0c13]">
+          Defina uma nova senha
+        </h1>
         <form action={update} className="mt-6 grid gap-4">
           <label>
             <span className="label">Nova senha</span>

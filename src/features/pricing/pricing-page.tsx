@@ -134,7 +134,7 @@ export function PricingPage({ workspace }: { workspace: Workspace }) {
           </div>
         </div>
         {!recipes.length ? (
-          <div className="mt-7 rounded-[12px] border border-dashed border-[#cad2cb] p-8 text-center text-sm text-[var(--muted)]">
+          <div className="mt-7 rounded-[12px] border border-dashed border-[#d5bd95] bg-[#fff9ec] p-8 text-center text-sm text-[var(--muted)]">
             Cadastre uma receita antes de calcular seu preço.
           </div>
         ) : (
@@ -203,8 +203,8 @@ export function PricingPage({ workspace }: { workspace: Workspace }) {
       </section>
       <aside className="space-y-5">
         <section className="panel overflow-hidden">
-          <div className="bg-[#173f2d] p-6 text-white">
-            <p className="text-sm text-[#bdd2c5]">Preço sugerido</p>
+          <div className="bg-[#8f1018] p-6 text-[#fff4dc]">
+            <p className="text-sm font-semibold text-[#ffd782]">Preço sugerido</p>
             <strong className="numeric mt-2 block text-4xl tracking-[-.04em]">
               {result.price
                 ? brl.format(
@@ -216,7 +216,7 @@ export function PricingPage({ workspace }: { workspace: Workspace }) {
                   )
                 : "-"}
             </strong>
-            <p className="mt-3 text-xs text-[#bdd2c5]">
+            <p className="mt-3 text-xs text-[#ffd782]">
               Para {margin}% de margem após taxas e custos informados.
             </p>
           </div>
@@ -285,7 +285,7 @@ export function PricingPage({ workspace }: { workspace: Workspace }) {
             </button>
           </div>
         </section>
-        <div className="rounded-[12px] border border-[#d8e3da] bg-[#edf5f0] p-4 text-sm leading-6 text-[#315a43]">
+        <div className="rounded-[12px] border border-[#e2bc69] bg-[#fff1c8] p-4 text-sm font-semibold leading-6 text-[#6d0c13]">
           <strong>Margem não é markup.</strong> A margem mede o lucro sobre a
           venda. O markup mede quanto o preço representa sobre o custo.
         </div>

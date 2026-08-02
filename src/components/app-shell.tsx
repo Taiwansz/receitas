@@ -36,6 +36,7 @@ import {
   ProductionPage,
   PurchasesPage,
 } from "@/features/operations/operations-pages";
+import { BrandLockup } from "./brand-lockup";
 
 const nav = [
   { id: "dashboard", label: "Visão geral", icon: House, group: "Operação" },
@@ -168,13 +169,11 @@ export function AppShell({
         />
       )}
       <aside
-        className={`fixed inset-y-0 left-0 z-30 w-[276px] bg-[#173f2d] text-white transition-transform lg:sticky lg:top-0 lg:w-auto lg:h-[100dvh] ${open ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}
+        className={`fixed inset-y-0 left-0 z-30 w-[286px] bg-[#7d0d14] text-[#fff4dc] transition-transform lg:sticky lg:top-0 lg:h-[100dvh] lg:w-auto ${open ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}
       >
         <div className="h-full flex flex-col">
-          <div className="h-[72px] flex items-center justify-between px-5 border-b border-white/10">
-            <span className="text-xl font-extrabold tracking-[-.05em]">
-              custiva
-            </span>
+          <div className="flex min-h-[82px] items-center justify-between border-b border-[#ffcb32]/20 px-4">
+            <BrandLockup compact inverse />
             <button
               className="lg:hidden p-2"
               onClick={() => setOpen(false)}
@@ -190,7 +189,7 @@ export function AppShell({
             {["Operação", "Produção", "Financeiro", "Administração"].map(
               (group) => (
                 <div key={group} className="mb-5">
-                  <p className="px-3 mb-2 text-[11px] font-bold uppercase tracking-[.1em] text-[#9bb8a8]">
+                  <p className="mb-2 px-3 text-[11px] font-extrabold uppercase tracking-[.1em] text-[#ffc94a]">
                     {group}
                   </p>
                   {nav
@@ -203,7 +202,7 @@ export function AppShell({
                           onClick={() => setOpen(false)}
                           key={item.id}
                           href={`/app/${item.id}`}
-                          className={`mb-1 flex min-h-10 items-center gap-3 rounded-[9px] px-3 text-sm font-semibold ${active ? "bg-white text-[#173f2d]" : "text-[#d8e4dc] hover:bg-white/10 hover:text-white"}`}
+                          className={`mb-1 flex min-h-10 items-center gap-3 rounded-[12px] px-3 text-sm font-bold transition-colors ${active ? "bg-[#ffbd16] text-[#4f080d] shadow-[inset_0_-2px_0_rgba(104,11,17,.18)]" : "text-[#fff0d2] hover:bg-[#fff4dc]/10 hover:text-white"}`}
                         >
                           <Icon
                             size={18}
@@ -226,7 +225,7 @@ export function AppShell({
                 <div className="truncate text-sm font-semibold">
                   {user.user_metadata.full_name ?? user.email}
                 </div>
-                <div className="truncate text-xs text-[#9bb8a8]">
+                <div className="truncate text-xs text-[#ffc94a]">
                   {workspace.organizationName}
                 </div>
               </div>
@@ -236,7 +235,7 @@ export function AppShell({
         </div>
       </aside>
       <div className="min-w-0">
-        <header className="sticky top-0 z-10 min-h-[72px] flex items-center gap-3 border-b border-[var(--line)] bg-white/95 px-4 md:px-7 backdrop-blur">
+        <header className="sticky top-0 z-10 flex min-h-[72px] items-center gap-3 border-b border-[var(--line)] bg-[#fffaf0]/95 px-4 backdrop-blur md:px-7">
           <button
             aria-label="Abrir menu"
             className="btn btn-secondary !p-2 lg:hidden"
@@ -245,14 +244,14 @@ export function AppShell({
             <List size={20} />
           </button>
           <div className="min-w-0 flex-1">
-            <h1 className="truncate text-lg font-bold tracking-[-.025em]">
+            <h1 className="brand-display truncate text-2xl font-extrabold leading-none tracking-[-.02em] text-[#6d0c13]">
               {meta.title}
             </h1>
             <p className="hidden sm:block truncate text-xs text-[var(--muted)]">
               {meta.description}
             </p>
           </div>
-          <div className="hidden md:flex items-center gap-2 text-sm text-[var(--muted)]">
+          <div className="hidden items-center gap-2 rounded-[12px] border border-[var(--line)] bg-white px-3 py-2 text-sm font-bold text-[var(--muted)] md:flex">
             <Buildings size={17} />
             {workspace.branchName ?? workspace.organizationName}
           </div>

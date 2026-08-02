@@ -146,7 +146,7 @@ export function ReportsPage({ workspace }: { workspace: Workspace }) {
           {chart.length ? (
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={chart}>
-                <CartesianGrid vertical={false} stroke="#e7ebe7" />
+                <CartesianGrid vertical={false} stroke="#eadcc4" />
                 <XAxis
                   dataKey="name"
                   tick={{ fontSize: 11 }}
@@ -162,13 +162,13 @@ export function ReportsPage({ workspace }: { workspace: Workspace }) {
                 <Bar
                   dataKey="custo"
                   name="Custo"
-                  fill="#8ba59a"
+                  fill="#ffb900"
                   radius={[4, 4, 0, 0]}
                 />
                 <Bar
                   dataKey="preco"
                   name="Preço"
-                  fill="#176b45"
+                  fill="#8f1018"
                   radius={[4, 4, 0, 0]}
                 />
               </BarChart>
@@ -182,7 +182,7 @@ export function ReportsPage({ workspace }: { workspace: Workspace }) {
       </section>
       <section className="panel overflow-x-auto">
         <table className="w-full min-w-[700px] text-left">
-          <thead className="bg-[#f7f9f7] text-xs text-[var(--muted)]">
+          <thead className="bg-[#fff6df] text-xs text-[var(--muted)]">
             <tr>
               <th className="px-5 py-3">Receita</th>
               <th>Custo total</th>

@@ -129,7 +129,7 @@ export function DashboardPage({ workspace }: { workspace: Workspace }) {
   }, [load]);
   const chart = useMemo(
     () =>
-      ingredients
+      [...ingredients]
         .sort((a, b) => Number(b.current_cost) - Number(a.current_cost))
         .slice(0, 7)
         .map((v) => ({
@@ -179,20 +179,20 @@ export function DashboardPage({ workspace }: { workspace: Workspace }) {
           {chart.length ? (
             <ResponsiveContainer width="100%" height={270}>
               <BarChart data={chart}>
-                <CartesianGrid vertical={false} stroke="#e7ebe7" />
+                <CartesianGrid vertical={false} stroke="#eadcc4" />
                 <XAxis
                   dataKey="name"
-                  tick={{ fontSize: 11, fill: "#647068" }}
+                  tick={{ fontSize: 11, fill: "#6d594c" }}
                   axisLine={false}
                   tickLine={false}
                 />
                 <YAxis
-                  tick={{ fontSize: 11, fill: "#647068" }}
+                  tick={{ fontSize: 11, fill: "#6d594c" }}
                   axisLine={false}
                   tickLine={false}
                 />
                 <Tooltip formatter={(v) => brl.format(Number(v))} />
-                <Bar dataKey="custo" fill="#176b45" radius={[5, 5, 0, 0]} />
+                <Bar dataKey="custo" fill="#8f1018" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           ) : (
@@ -255,11 +255,11 @@ function Metric({
 }) {
   return (
     <div
-      className={`panel p-5 ${strong ? "bg-[#173f2d] text-white border-[#173f2d]" : ""}`}
+      className={`panel p-5 ${strong ? "border-[#680b11] bg-[#8f1018] text-[#fff4dc]" : ""}`}
     >
       <div className="flex items-center justify-between">
         <span
-          className={`text-sm ${strong ? "text-[#c7d9ce]" : "text-[var(--muted)]"}`}
+          className={`text-sm font-semibold ${strong ? "text-[#ffd782]" : "text-[var(--muted)]"}`}
         >
           {label}
         </span>
@@ -267,9 +267,9 @@ function Metric({
           size={19}
           className={
             warning
-              ? "text-[#b86808]"
+              ? "text-[#a85e00]"
               : strong
-                ? "text-[#b9d4c4]"
+                ? "text-[#ffcb32]"
                 : "text-[var(--accent)]"
           }
         />
@@ -292,9 +292,9 @@ function Health({
   good: boolean;
 }) {
   return (
-    <div className="flex items-center gap-3 rounded-[10px] bg-[#f6f8f6] p-3">
+    <div className="flex items-center gap-3 rounded-[12px] bg-[#fff6df] p-3">
       <span
-        className={`grid h-8 w-8 place-items-center rounded-full text-sm font-bold ${good ? "bg-[#dcefe4] text-[#176b45]" : "bg-[#fff0de] text-[#9a5808]"}`}
+        className={`grid h-8 w-8 place-items-center rounded-full text-sm font-black ${good ? "bg-[#ffcb32] text-[#5f0a10]" : "bg-[#fde4ca] text-[#9a4808]"}`}
       >
         {good ? "✓" : "!"}
       </span>
@@ -305,7 +305,7 @@ function Health({
 }
 function Empty({ text }: { text: string }) {
   return (
-    <div className="h-[260px] grid place-items-center rounded-[12px] border border-dashed border-[#cad2cb] bg-[#f8faf8] p-8 text-center text-sm text-[var(--muted)]">
+    <div className="h-[260px] grid place-items-center rounded-[12px] border border-dashed border-[#d5bd95] bg-[#fff9ec] p-8 text-center text-sm text-[var(--muted)]">
       {text}
     </div>
   );
