@@ -76,14 +76,6 @@ export default async function LoginPage({
                   {query.error}
                 </p>
               )}
-              {query.sent && (
-                <p
-                  role="status"
-                  className="mt-5 rounded-[12px] bg-[var(--accent-soft)] p-3 text-sm font-semibold text-[#6d0c13]"
-                >
-                  Conta criada. Confirme o e-mail para acessar.
-                </p>
-              )}
               {query.recovery && (
                 <p
                   role="status"

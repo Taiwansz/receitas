@@ -34,13 +34,11 @@ export async function signUp(formData: FormData) {
       "signup",
     );
   const supabase = await createClient();
-  const origin = siteOrigin();
-  const { error } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
       data: { full_name: name },
-      emailRedirectTo: `${origin}/auth/callback`,
     },
   });
   if (error)
@@ -48,7 +46,11 @@ export async function signUp(formData: FormData) {
       "Não foi possível criar a conta. Tente novamente em alguns minutos.",
       "signup",
     );
-  redirect("/login?sent=1");
+  if (!data.session)
+    fail(
+      "A conta foi criada, mas não foi possível iniciar a sessão. Tente entrar com seus dados.",
+    );
+  redirect("/app");
 }
 
 export async function requestRecovery(formData: FormData) {

@@ -8,7 +8,7 @@ Valores em reais aceitam centavos. Percentuais representam partes do valor de ve
 
 ## 2. Primeiro acesso
 
-1. Crie a conta ou aceite o convite e confirme o e-mail.
+1. Crie a conta e acesse imediatamente, ou entre com um convite existente.
 2. Informe organização, moeda e timezone.
 3. Crie a filial/local principal e escolha a política de estoque negativo.
 4. Convide a equipe em **Administração → Pessoas**, atribuindo o menor papel necessário.

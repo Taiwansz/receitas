@@ -31,7 +31,7 @@ Este documento detalha as jornadas críticas do `PRD.md`. Cada etapa explicita r
 
 ### Fluxo principal
 
-1. Usuário confirma e-mail/entra; callback valida origem permitida e retorna ao onboarding.
+1. Usuário cria a conta e recebe uma sessão imediatamente; o sistema segue direto para o onboarding.
 2. Cria organização com nome, moeda BRL e timezone; informa primeira filial/local operacional.
 3. Escolhe política inicial de estoque negativo e preferências de unidades; escolhas possuem exemplos.
 4. Pode convidar equipe agora ou pular; nenhum dado fictício é criado por padrão.
