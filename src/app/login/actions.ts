@@ -20,7 +20,7 @@ export async function signIn(formData: FormData) {
   if (!email || !password) fail("Preencha e-mail e senha.");
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithPassword({ email, password });
-  if (error) fail("Não foi possível entrar. Verifique seus dados.");
+  if (error) fail("Não foi possível entrar. Verifique seus dados de e-mail e senha.");
   redirect("/app");
 }
 
@@ -41,15 +41,18 @@ export async function signUp(formData: FormData) {
       data: { full_name: name },
     },
   });
-  if (error)
+  if (error) {
+    const msg = error.message?.includes("already registered")
+      ? "Este e-mail já está cadastrado. Tente fazer login."
+      : error.message || "Não foi possível criar a conta. Tente novamente.";
+    fail(msg, "signup");
+  }
+  if (!data.session) {
     fail(
-      "Não foi possível criar a conta. Tente novamente em alguns minutos.",
+      "A conta foi criada com sucesso! Caso a confirmação de e-mail esteja ativada, verifique sua caixa de entrada.",
       "signup",
     );
-  if (!data.session)
-    fail(
-      "A conta foi criada, mas não foi possível iniciar a sessão. Tente entrar com seus dados.",
-    );
+  }
   redirect("/app");
 }
 
