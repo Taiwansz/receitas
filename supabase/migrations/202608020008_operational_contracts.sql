@@ -177,7 +177,7 @@ revoke all on function public.save_supplier(uuid,text,text,text,text,boolean),pu
  public.save_packaging(uuid,text,text,text,numeric,numeric,boolean),public.save_expense(uuid,text,text,text,text,numeric,text,date,boolean),
  public.create_sales_channel(text,text,numeric,numeric),public.register_purchase(uuid,text,timestamptz,jsonb,numeric,numeric,numeric),
  public.register_inventory_adjustment(uuid,numeric,numeric,text),public.register_production_batch(uuid,numeric,boolean,text),
- public.receive_purchase(uuid,uuid,timestamptz) from public;
+ public.receive_purchase(uuid,uuid,timestamptz) from public,anon;
 grant execute on function public.save_supplier(uuid,text,text,text,text,boolean),public.soft_delete_supplier(uuid),
  public.save_packaging(uuid,text,text,text,numeric,numeric,boolean),public.save_expense(uuid,text,text,text,text,numeric,text,date,boolean),
  public.create_sales_channel(text,text,numeric,numeric),public.register_purchase(uuid,text,timestamptz,jsonb,numeric,numeric,numeric),

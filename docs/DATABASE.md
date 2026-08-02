@@ -80,7 +80,7 @@ A soma de encargos percentuais e margem deve ser menor que 1. Valores monetário
 - `scenarios`: premissas/resultados JSON versionáveis para cenários e break-even.
 - `alerts`: alertas operacionais com ciclo de vida explícito.
 - `attachments`: metadados; os bytes ficam no bucket privado `business-attachments`.
-- `audit_logs`: trilha append-only com ator, instante, tabela, operação e valores anterior/novo.
+- `custiva_audit_logs`: trilha append-only com ator, instante, tabela, operação e valores anterior/novo. O prefixo evita colisão ao coexistir com aplicações legadas no mesmo projeto Supabase.
 
 ## Contratos para a aplicação
 
@@ -120,7 +120,7 @@ Todas as views usam `security_invoker=true`; portanto preservam RLS das tabelas-
 - FKs compostas `(organization_id, id)` impedem referências cruzadas entre tenants.
 - Checks rejeitam valores negativos, perdas impossíveis, datas invertidas e percentuais fora do domínio.
 - Exclusões de cadastros são lógicas (`deleted_at`); fatos financeiros e ledger são append-only.
-- `created_at`, `updated_at`, `created_by`, snapshots e `audit_logs` preservam rastreabilidade.
+- `created_at`, `updated_at`, `created_by`, snapshots e `custiva_audit_logs` preservam rastreabilidade.
 - O banco rejeita estoque negativo, exceto em local configurado explicitamente com `allow_negative_stock=true`.
 - `numeric`, nunca `float`, é usado em dinheiro, quantidade, taxa e fator.
 
@@ -137,7 +137,7 @@ O registro de `attachments.object_path` deve usar exatamente o mesmo caminho. Up
 - Habilitar backups automáticos/PITR do plano Supabase compatível com o RPO/RTO do negócio.
 - Exportar schema e executar teste de restauração periodicamente em projeto isolado.
 - Arquivos do Storage precisam de política de backup separada do PostgreSQL.
-- Não truncar `audit_logs`, `ingredient_price_history`, `product_prices` ou `stock_movements` sem política formal de retenção e exportação.
+- Não truncar `custiva_audit_logs`, `ingredient_price_history`, `product_prices` ou `stock_movements` sem política formal de retenção e exportação.
 - Antes de migration destrutiva: backup verificado, migration reversível/expand-contract e smoke test de RLS.
 
 ## Limitações conhecidas

@@ -70,7 +70,7 @@ Toda tabela de tenant inclui `organization_id`, timestamps e, quando aplicável,
 | Preços     | `pricing_rules`, `product_prices`, `scenarios`                                                                       | versão/custo/canal snapshotados; denominador positivo                   |
 | Estoque    | `inventory_locations`, `stock_movements`, `inventory_balances`                                                       | livro imutável; saldo derivável; idempotência/origem única              |
 | Produção   | `production_batches`, `production_consumption`, `production_losses`                                                  | receita/versionamento fixos; confirmação atômica                        |
-| Governança | `alerts`, `audit_logs`                                                                                               | ator/contexto; cliente não altera log crítico                           |
+| Governança | `alerts`, `custiva_audit_logs`                                                                                       | ator/contexto; cliente não altera log crítico                           |
 
 ### Estratégia temporal e histórica
 

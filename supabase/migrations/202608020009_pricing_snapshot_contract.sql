@@ -41,5 +41,5 @@ begin
   values(new_id,target_org,version_id,target_channel,total_cost,fixed_charge,total_pct,target_rate,p_minimum_price,p_price,p_price,p_notes);
   return new_id;
 end; $$;
-revoke all on function public.save_product_price_v2(uuid,uuid,numeric,numeric,numeric,numeric,numeric,text) from public;
+revoke all on function public.save_product_price_v2(uuid,uuid,numeric,numeric,numeric,numeric,numeric,text) from public,anon;
 grant execute on function public.save_product_price_v2(uuid,uuid,numeric,numeric,numeric,numeric,numeric,text) to authenticated;

@@ -62,7 +62,7 @@ begin
     'user_profiles','organizations','branches','permissions','roles','role_permissions','memberships','membership_roles','membership_branches',
     'measurement_units','unit_conversions','ingredient_categories','suppliers','ingredients','ingredient_suppliers','purchases','purchase_items','ingredient_price_history','packaging_items',
     'recipes','recipe_versions','recipe_ingredients','recipe_sub_recipes','recipe_packaging','cost_centers','expenses','allocation_rules','sales_channels','channel_fees','taxes','pricing_rules','product_prices',
-    'inventory_locations','inventory_balances','stock_movements','production_batches','production_consumption','production_losses','scenarios','alerts','attachments','audit_logs'
+    'inventory_locations','inventory_balances','stock_movements','production_batches','production_consumption','production_losses','scenarios','alerts','attachments','custiva_audit_logs'
   ] loop execute format('alter table public.%I enable row level security', t); end loop;
 end $$;
 
@@ -217,7 +217,7 @@ begin
   end loop;
 end $$;
 
-create policy audit_logs_select on public.audit_logs for select to authenticated
+create policy custiva_audit_logs_select on public.custiva_audit_logs for select to authenticated
 using (app.has_branch_permission(organization_id,branch_id,'audit.read'));
 
 insert into storage.buckets (id,name,public,file_size_limit,allowed_mime_types)
@@ -265,6 +265,19 @@ begin
   end loop;
 end $$;
 
-grant select, insert, update, delete on all tables in schema public to authenticated;
-grant select on public.audit_logs to authenticated;
-revoke insert, update, delete on public.audit_logs, public.inventory_balances, public.stock_movements from authenticated;
+-- Keep grants scoped to Custiva objects so this migration can safely coexist
+-- with other applications in the same Supabase public schema.
+do $$
+declare t text;
+begin
+  foreach t in array array[
+    'user_profiles','organizations','branches','permissions','roles','role_permissions','memberships','membership_roles','membership_branches',
+    'measurement_units','unit_conversions','ingredient_categories','suppliers','ingredients','ingredient_suppliers','purchases','purchase_items','ingredient_price_history','packaging_items',
+    'recipes','recipe_versions','recipe_ingredients','recipe_sub_recipes','recipe_packaging','cost_centers','expenses','allocation_rules','sales_channels','channel_fees','taxes','pricing_rules','product_prices',
+    'inventory_locations','inventory_balances','stock_movements','production_batches','production_consumption','production_losses','scenarios','alerts','attachments','custiva_audit_logs'
+  ] loop
+    execute format('grant select, insert, update, delete on table public.%I to authenticated', t);
+  end loop;
+end $$;
+grant select on public.custiva_audit_logs to authenticated;
+revoke insert, update, delete on public.custiva_audit_logs, public.inventory_balances, public.stock_movements from authenticated;

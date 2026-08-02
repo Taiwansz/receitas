@@ -216,7 +216,7 @@ create table public.attachments (
 );
 create index attachments_entity_idx on public.attachments (organization_id, entity_type, entity_id) where deleted_at is null;
 
-create table public.audit_logs (
+create table public.custiva_audit_logs (
   id bigint generated always as identity primary key,
   organization_id uuid not null references public.organizations(id) on delete restrict,
   branch_id uuid,
@@ -229,11 +229,11 @@ create table public.audit_logs (
   request_id text,
   changed_at timestamptz not null default now(),
   foreign key (organization_id, branch_id) references public.branches(organization_id, id) on delete restrict,
-  constraint audit_logs_operation check (operation in ('INSERT', 'UPDATE', 'DELETE')),
-  constraint audit_logs_payload check (old_values is not null or new_values is not null)
+  constraint custiva_audit_logs_operation check (operation in ('INSERT', 'UPDATE', 'DELETE')),
+  constraint custiva_audit_logs_payload check (old_values is not null or new_values is not null)
 );
-create index audit_logs_entity_idx on public.audit_logs (organization_id, table_name, row_id, changed_at desc);
-create index audit_logs_actor_idx on public.audit_logs (organization_id, changed_by, changed_at desc);
+create index custiva_audit_logs_entity_idx on public.custiva_audit_logs (organization_id, table_name, row_id, changed_at desc);
+create index custiva_audit_logs_actor_idx on public.custiva_audit_logs (organization_id, changed_by, changed_at desc);
 
 create or replace function app.write_audit_log()
 returns trigger
@@ -257,7 +257,7 @@ begin
   end if;
   target_branch := nullif(source_row ->> 'branch_id', '')::uuid;
   target_id := nullif(source_row ->> 'id', '')::uuid;
-  insert into public.audit_logs (
+  insert into public.custiva_audit_logs (
     organization_id, branch_id, table_name, row_id, operation,
     old_values, new_values, changed_by, request_id
   ) values (
@@ -437,7 +437,7 @@ for each row execute function app.validate_production_batch_scope();
 
 create trigger stock_movements_immutable before update or delete on public.stock_movements
 for each row execute function app.prevent_immutable_history_change();
-create trigger audit_logs_immutable before update or delete on public.audit_logs
+create trigger custiva_audit_logs_immutable before update or delete on public.custiva_audit_logs
 for each row execute function app.prevent_immutable_history_change();
 
 do $$

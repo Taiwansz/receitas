@@ -62,7 +62,7 @@ Isso evita que conhecer um UUID de outra filial contorne o escopo.
 
 ### Histórico financeiro
 
-`ingredient_price_history`, `product_prices`, `stock_movements` e `audit_logs` não aceitam update/delete. Correções devem ser novos fatos compensatórios. Versões de receita publicadas e seus itens também são imutáveis.
+`ingredient_price_history`, `product_prices`, `stock_movements` e `custiva_audit_logs` não aceitam update/delete. Correções devem ser novos fatos compensatórios. Versões de receita publicadas e seus itens também são imutáveis.
 
 ### Storage
 

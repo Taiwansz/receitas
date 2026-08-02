@@ -9,7 +9,7 @@ Data: 2026-08-02
 - Vitest: 25 tests in 6 files approved.
 - Next.js production build: approved.
 - Production dependency audit: zero known vulnerabilities after controlled dependency overrides.
-- PostgreSQL 17 parser: migrations 001–009 approved.
+- PostgreSQL 17 parser: migrations 001–010 approved.
 - PostgreSQL WASM migration application: approved with Auth/Storage mocks.
 - Transactional database smoke: workspace, ingredient, recipe, direct-sale price, kg-to-g purchase, FEFO production and final inventory balance approved.
 - Pricing contract smoke: V2 snapshots, required-null rejection and V1→V2 direct-channel interoperability approved.

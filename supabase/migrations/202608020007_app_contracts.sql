@@ -302,9 +302,10 @@ grant execute on function app.current_workspace_org(),app.current_workspace_bran
 revoke all on function public.create_workspace(text,text),public.get_current_workspace(),
   public.upsert_ingredient(uuid,text,text,text,text,numeric,numeric,numeric,numeric,text,boolean),
   public.delete_ingredient(uuid),public.save_recipe(uuid,text,text,numeric,text,numeric,text,jsonb),
-  public.save_product_price(uuid,uuid,numeric,numeric,numeric,text) from public;
+  public.save_product_price(uuid,uuid,numeric,numeric,numeric,text) from public,anon;
 grant execute on function public.create_workspace(text,text),public.get_current_workspace(),
   public.upsert_ingredient(uuid,text,text,text,text,numeric,numeric,numeric,numeric,text,boolean),
   public.delete_ingredient(uuid),public.save_recipe(uuid,text,text,numeric,text,numeric,text,jsonb),
   public.save_product_price(uuid,uuid,numeric,numeric,numeric,text) to authenticated;
 grant select on public.ingredients_app,public.recipe_summaries_app,public.sales_channels_app,public.dashboard_metrics_app to authenticated;
+revoke all on public.ingredients_app,public.recipe_summaries_app,public.sales_channels_app,public.dashboard_metrics_app from anon;

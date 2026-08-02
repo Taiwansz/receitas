@@ -1,6 +1,6 @@
 # Matriz de rastreabilidade de requisitos
 
-**Baseline:** candidato local de 2026-08-02, após as migrations 001–009.  
+**Baseline:** candidato local de 2026-08-02, após as migrations 001–010.
 **Legenda:** **C** — coberto por implementação e evidência local; **P** — implementação presente, mas falta validação em ambiente hospedado ou uma parte complementar; **N** — não incluído nesta entrega.
 
 O status não confunde presença de código com aprovação de produção. Auth hospedado, isolamento RLS/Storage real, E2E no navegador, restore e smoke de produção permanecem **P** até existirem projetos Supabase e Vercel autenticados.

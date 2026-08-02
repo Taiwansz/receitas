@@ -2,7 +2,7 @@
 
 ## Implemented
 
-Application source, 9 versioned database migrations, RLS, Storage policies, decimal-safe calculation engine, operational RPCs, responsive interface, automated checks and technical/user documentation.
+Application source, 10 versioned database migrations, RLS, Storage policies, hardened RPC grants, decimal-safe calculation engine, operational RPCs, responsive interface, automated checks and technical/user documentation.
 
 ## Participating teams
 
