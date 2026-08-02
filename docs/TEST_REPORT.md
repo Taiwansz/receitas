@@ -13,6 +13,9 @@ Data: 2026-08-02
 - PostgreSQL WASM migration application: approved with Auth/Storage mocks.
 - Transactional database smoke: workspace, ingredient, recipe, direct-sale price, kg-to-g purchase, FEFO production and final inventory balance approved.
 - Pricing contract smoke: V2 snapshots, required-null rejection and V1→V2 direct-channel interoperability approved.
+- Supabase hosted migrations: 001–010 applied on PostgreSQL 17.
+- Supabase hosted security inventory: 42 RLS tables, 80 policies, zero anonymous table/RPC grants, 16 authenticated RPC grants and private `business-attachments` bucket.
+- Vercel deployment: `READY`; root redirect and `/login` HTTP 200 smoke approved; error-only build log contains no build failure.
 
 ## Coverage
 
@@ -20,4 +23,4 @@ The automated suite covers decimal precision, ingredient acquisition cost and yi
 
 ## Pending environment checks
 
-Real Supabase Auth callbacks, hosted RLS isolation, Storage upload, Vercel runtime logs and production browser smoke require the provisioned cloud environment.
+Supabase Auth callback allowlisting, two-tenant adversarial RLS tests, authenticated Storage upload/download, complete browser E2E and backup restore drill remain pending. The current deployment packaged public environment values for that build; persistence and scoping of project-level Vercel variables still require confirmation.

@@ -3,7 +3,7 @@
 **Baseline:** candidato local de 2026-08-02, após as migrations 001–010.
 **Legenda:** **C** — coberto por implementação e evidência local; **P** — implementação presente, mas falta validação em ambiente hospedado ou uma parte complementar; **N** — não incluído nesta entrega.
 
-O status não confunde presença de código com aprovação de produção. Auth hospedado, isolamento RLS/Storage real, E2E no navegador, restore e smoke de produção permanecem **P** até existirem projetos Supabase e Vercel autenticados.
+O status não confunde presença de código com aprovação operacional. Migrations, inventário de RLS/Storage e smoke público foram executados nos projetos hospedados; Auth callback, isolamento adversarial entre dois tenants, Storage autenticado, E2E completo e restore permanecem **P** até terem evidência própria.
 
 ## Implementação por camada
 
@@ -73,7 +73,7 @@ O status não confunde presença de código com aprovação de produção. Auth 
 | Testes críticos de cálculo | C | 25 testes em 6 arquivos |
 | Migrations reproduzíveis | C | parser PostgreSQL e aplicação PGlite com mocks Auth/Storage |
 | Segredos e dependências | C | scan local sem segredo e `npm audit --omit=dev` sem vulnerabilidades |
-| RLS/Storage hospedados | P | código presente; validação no projeto Supabase real pendente |
+| RLS/Storage hospedados | P | 42 tabelas com RLS, 80 políticas e bucket privado confirmados; teste adversarial com dois tenants e upload/download autenticado pendentes |
 | Mobile e acessibilidade | P | layout responsivo, alvos de toque e semântica; auditoria E2E 320 px pendente |
 | Desempenho | P | agregados em views; teste com volume e paginação server-side pendentes |
 | Observabilidade | P | erros de consulta expostos ao usuário; integração de telemetria não incluída |

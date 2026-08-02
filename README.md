@@ -2,6 +2,8 @@
 
 Plataforma web multiempresa para custos de ingredientes, fichas técnicas, compras, estoque, produção, precificação por canal e relatórios de rentabilidade para negócios de alimentação.
 
+Aplicação publicada: https://custiva.vercel.app
+
 ## Stack
 
 - Next.js 16, React 19 e TypeScript estrito

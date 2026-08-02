@@ -7,6 +7,13 @@ function fail(message: string, mode: "login" | "signup" = "login") {
   redirect(`/login?mode=${mode}&error=${encodeURIComponent(message)}`);
 }
 
+function siteOrigin() {
+  const configured = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (configured) return configured.replace(/\/$/, "");
+  const vercelUrl = process.env.VERCEL_URL?.trim();
+  return vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000";
+}
+
 export async function signIn(formData: FormData) {
   const email = String(formData.get("email") ?? "").trim();
   const password = String(formData.get("password") ?? "");
@@ -27,7 +34,7 @@ export async function signUp(formData: FormData) {
       "signup",
     );
   const supabase = await createClient();
-  const origin = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const origin = siteOrigin();
   const { error } = await supabase.auth.signUp({
     email,
     password,
@@ -48,7 +55,7 @@ export async function requestRecovery(formData: FormData) {
   const email = String(formData.get("email") ?? "").trim();
   if (!email) fail("Informe seu e-mail.");
   const supabase = await createClient();
-  const origin = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const origin = siteOrigin();
   await supabase.auth.resetPasswordForEmail(email, {
     redirectTo: `${origin}/auth/callback?next=/update-password`,
   });
