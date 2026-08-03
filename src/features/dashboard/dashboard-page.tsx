@@ -257,14 +257,14 @@ function Metric({
     <div
       className={`panel p-5 transition-shadow ${
         strong
-          ? "border-[#4a070b] bg-[#790c13] text-white shadow-md"
+          ? "border-[#e6a100] bg-[#ffc629] text-black shadow-md"
           : "bg-[var(--surface)] text-[var(--ink)]"
       }`}
     >
       <div className="flex items-center justify-between">
         <span
           className={`text-xs font-bold uppercase tracking-wider ${
-            strong ? "text-[#ffebad]" : "text-[var(--muted)]"
+            strong ? "text-black font-extrabold" : "text-[var(--muted)]"
           }`}
         >
           {label}
@@ -275,14 +275,14 @@ function Metric({
             warning
               ? "text-[#d97706]"
               : strong
-                ? "text-[#ffc107]"
+                ? "text-black"
                 : "text-[var(--accent)]"
           }
         />
       </div>
       <div
         className={`numeric mt-4 text-3xl font-extrabold tracking-tight ${
-          strong ? "text-white drop-shadow-sm" : "text-[var(--ink)]"
+          strong ? "text-black" : "text-[var(--ink)]"
         } ${loading ? "animate-pulse opacity-30" : ""}`}
       >
         {loading ? "--" : value}
