@@ -255,27 +255,35 @@ function Metric({
 }) {
   return (
     <div
-      className={`panel p-5 ${strong ? "border-[#680b11] bg-[#8f1018] text-[#fff4dc]" : ""}`}
+      className={`panel p-5 transition-shadow ${
+        strong
+          ? "border-[#4a070b] bg-[#790c13] text-white shadow-md"
+          : "bg-[var(--surface)] text-[var(--ink)]"
+      }`}
     >
       <div className="flex items-center justify-between">
         <span
-          className={`text-sm font-semibold ${strong ? "text-[#ffd782]" : "text-[var(--muted)]"}`}
+          className={`text-xs font-bold uppercase tracking-wider ${
+            strong ? "text-[#ffebad]" : "text-[var(--muted)]"
+          }`}
         >
           {label}
         </span>
         <Icon
-          size={19}
+          size={22}
           className={
             warning
-              ? "text-[#a85e00]"
+              ? "text-[#d97706]"
               : strong
-                ? "text-[#ffcb32]"
+                ? "text-[#ffc107]"
                 : "text-[var(--accent)]"
           }
         />
       </div>
       <div
-        className={`numeric mt-5 text-2xl font-semibold ${loading ? "animate-pulse opacity-30" : ""}`}
+        className={`numeric mt-4 text-3xl font-extrabold tracking-tight ${
+          strong ? "text-white drop-shadow-sm" : "text-[var(--ink)]"
+        } ${loading ? "animate-pulse opacity-30" : ""}`}
       >
         {loading ? "--" : value}
       </div>
