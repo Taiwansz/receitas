@@ -35,6 +35,16 @@ npm audit --omit=dev
 
 O motor financeiro possui testes de custo de ingrediente, rendimento, conversões, receitas, sub-receitas, margem, markup, canais, desconto, cenários e ponto de equilíbrio.
 
+## Testes Automatizados E2E (Playwright)
+
+```bash
+# Executar a suíte completa de testes E2E
+npx playwright test
+
+# Executar a simulação operacional completa (Fornecedores, Embalagens, Despesas, Canais, Precificação)
+npx playwright test e2e/populate-full-business.spec.ts
+```
+
 ## Segurança
 
 - Todas as entidades de negócio têm `organization_id` e RLS.
